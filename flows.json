@@ -1,0 +1,429 @@
+[
+    {
+        "id": "cb0265a5.f910d8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bb0cdb0d.5cd0a8",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "435mu2.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "4056665e.9902d8",
+        "type": "ui_base",
+        "z": 0,
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "47215ee3.03d7d",
+        "type": "ui_tab",
+        "z": 0,
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "67dbd4b9.5b3acc",
+        "type": "ui_group",
+        "z": 0,
+        "name": "Smart agriculture",
+        "tab": "47215ee3.03d7d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b3dd6125.383ee",
+        "type": "ibmiot in",
+        "z": "cb0265a5.f910d8",
+        "authentication": "apiKey",
+        "apiKey": "bb0cdb0d.5cd0a8",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "mcu123",
+        "applicationId": "",
+        "deviceType": "NodeMCU",
+        "eventType": "Data",
+        "commandType": "data",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": true,
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": false,
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": true,
+        "qos": 0,
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "14de71af.3f32be",
+                "bde30168.83d",
+                "1132637d.8c87cd",
+                "d0b52f8c.31c92"
+            ]
+        ]
+    },
+    {
+        "id": "14de71af.3f32be",
+        "type": "debug",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 650,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bde30168.83d",
+        "type": "function",
+        "z": "cb0265a5.f910d8",
+        "name": "temperature",
+        "func": "msg.payload=msg.payload.d.temperature\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 240,
+        "wires": [
+            [
+                "14de71af.3f32be",
+                "eb79c014.7a663"
+            ]
+        ]
+    },
+    {
+        "id": "1132637d.8c87cd",
+        "type": "function",
+        "z": "cb0265a5.f910d8",
+        "name": "humidity",
+        "func": "msg.payload=msg.payload.d.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 400,
+        "wires": [
+            [
+                "14de71af.3f32be",
+                "b1d9d372.1ee16"
+            ]
+        ]
+    },
+    {
+        "id": "d0b52f8c.31c92",
+        "type": "function",
+        "z": "cb0265a5.f910d8",
+        "name": "Object Temperature",
+        "func": "msg.payload=msg.payload.d.objectTemp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "46befb3b.433634"
+            ]
+        ]
+    },
+    {
+        "id": "fc7511fa.88d7f",
+        "type": "http request",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "api.openweathermap.org/data/2.5/weather?q=Ambala,IN&appid=e8251ea7a43e296d1b35e6586151aea5",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "14de71af.3f32be"
+            ]
+        ]
+    },
+    {
+        "id": "9baf279f.04d8b8",
+        "type": "inject",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "fc7511fa.88d7f"
+            ]
+        ]
+    },
+    {
+        "id": "bd0bdd3a.1d6d9",
+        "type": "ibmiot out",
+        "z": "cb0265a5.f910d8",
+        "authentication": "apiKey",
+        "apiKey": "bb0cdb0d.5cd0a8",
+        "outputType": "cmd",
+        "deviceId": "mcu1234",
+        "deviceType": "NodeMC",
+        "eventCommandType": "data",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 560,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "93ce87b7.d4c288",
+        "type": "ui_button",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "group": "67dbd4b9.5b3acc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Motor ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoron\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "bd0bdd3a.1d6d9"
+            ]
+        ]
+    },
+    {
+        "id": "d869a9ff.ef6fc8",
+        "type": "ui_button",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "group": "67dbd4b9.5b3acc",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Motor OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoroff\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "bd0bdd3a.1d6d9"
+            ]
+        ]
+    },
+    {
+        "id": "eb79c014.7a663",
+        "type": "ui_gauge",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "group": "67dbd4b9.5b3acc",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 690,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b1d9d372.1ee16",
+        "type": "ui_gauge",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "group": "67dbd4b9.5b3acc",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "80",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 700,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "46befb3b.433634",
+        "type": "ui_gauge",
+        "z": "cb0265a5.f910d8",
+        "name": "",
+        "group": "67dbd4b9.5b3acc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Object Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 740,
+        "y": 180,
+        "wires": []
+    }
+]
